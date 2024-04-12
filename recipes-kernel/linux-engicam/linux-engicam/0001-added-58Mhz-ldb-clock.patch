@@ -1,0 +1,73 @@
+From 7b1c08b79814567b4c39cabf52e1c5f8486be91e Mon Sep 17 00:00:00 2001
+From: Matteo Lisi <matteo.lisi@engicam.com>
+Date: Tue, 2 Apr 2024 17:09:14 +0200
+Subject: [PATCH] added 58Mhz ldb clock
+
+---
+ arch/arm64/boot/dts/freescale/imx8mp.dtsi |  2 +-
+ drivers/clk/imx/clk-pll14xx.c             |  1 +
+ drivers/gpu/drm/imx/imx8mp-ldb.c          | 19 -------------------
+ 3 files changed, 2 insertions(+), 20 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/freescale/imx8mp.dtsi b/arch/arm64/boot/dts/freescale/imx8mp.dtsi
+index 7e71a112c618..afbaff5e504b 100644
+--- a/arch/arm64/boot/dts/freescale/imx8mp.dtsi
++++ b/arch/arm64/boot/dts/freescale/imx8mp.dtsi
+@@ -823,7 +823,7 @@
+ 						       <800000000>,
+ 						       <393216000>,
+ 						       <361267200>,
+-						       <1039500000>;
++						       <406000000>;
+ 			};
+ 
+ 			src: reset-controller@30390000 {
+diff --git a/drivers/clk/imx/clk-pll14xx.c b/drivers/clk/imx/clk-pll14xx.c
+index 1563a7bff422..e2253e1e99c6 100644
+--- a/drivers/clk/imx/clk-pll14xx.c
++++ b/drivers/clk/imx/clk-pll14xx.c
+@@ -62,6 +62,7 @@ static const struct imx_pll14xx_rate_table imx_pll1443x_tbl[] = {
+ 	PLL_1443X_RATE(519750000U, 173, 2, 2, 16384),
+ 	PLL_1443X_RATE(393216000U, 262, 2, 3, 9437),
+ 	PLL_1443X_RATE(361267200U, 361, 3, 3, 17511),
++	PLL_1443X_RATE(406000000U, 135, 2, 2, 0),
+ };
+ 
+ struct imx_pll14xx_clk imx_1443x_pll = {
+diff --git a/drivers/gpu/drm/imx/imx8mp-ldb.c b/drivers/gpu/drm/imx/imx8mp-ldb.c
+index be969f453587..fc4d2d002495 100644
+--- a/drivers/gpu/drm/imx/imx8mp-ldb.c
++++ b/drivers/gpu/drm/imx/imx8mp-ldb.c
+@@ -194,15 +194,6 @@ imx8mp_ldb_encoder_atomic_check(struct drm_encoder *encoder,
+ 		return -EINVAL;
+ 	}
+ 
+-	/*
+-	 * Due to limited video PLL frequency points on i.MX8mp,
+-	 * we do mode fixup here in case any mode is unsupported.
+-	 */
+-	if (ldb->dual)
+-		mode->clock = mode->clock > 100000 ? 148500 : 74250;
+-	else
+-		mode->clock = 74250;
+-
+ 	return 0;
+ }
+ 
+@@ -220,16 +211,6 @@ imx8mp_ldb_encoder_mode_valid(struct drm_encoder *encoder,
+ 	if (ldb_ch->panel)
+ 		return MODE_OK;
+ 
+-	/*
+-	 * Due to limited video PLL frequency points on i.MX8mp,
+-	 * we do mode valid check here.
+-	 */
+-	if (ldb->dual && mode->clock != 74250 && mode->clock != 148500)
+-		return MODE_NOCLOCK;
+-
+-	if (!ldb->dual && mode->clock != 74250)
+-		return MODE_NOCLOCK;
+-
+ 	return MODE_OK;
+ }
+ 
