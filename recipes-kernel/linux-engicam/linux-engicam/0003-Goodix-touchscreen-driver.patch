@@ -1,0 +1,58 @@
+From a3c9af4f3a3b2306c22f3ee1cdcd94de86470cd4 Mon Sep 17 00:00:00 2001
+From: Matteo Lisi <matteo.lisi@engicam.com>
+Date: Mon, 23 Oct 2023 16:30:51 +0200
+Subject: [PATCH] Goodix touchscreen driver
+
+---
+ .../dts/engicam/imx8mp-icore-starterkit.dts   | 21 +++++++++++--------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/engicam/imx8mp-icore-starterkit.dts b/arch/arm64/boot/dts/engicam/imx8mp-icore-starterkit.dts
+index 39d3babf9e71..a5315ac2ac36 100644
+--- a/arch/arm64/boot/dts/engicam/imx8mp-icore-starterkit.dts
++++ b/arch/arm64/boot/dts/engicam/imx8mp-icore-starterkit.dts
+@@ -460,14 +460,16 @@ ov5640_mipi_0_ep: endpoint {
+ 		};
+ 	};
+ 
+-	polytouch: edt-ft5x26@38 {
+-		compatible = "edt,edt-ft5x26";
+-		reg = <0x38>;
++
++	gt911@14 {
++		compatible = "goodix,gt911";
++		reg = <0x14>;
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&edt_ft5x06_pins>;
++		pinctrl-0 = <&gt911_pins>;
+ 		interrupt-parent = <&gpio4>;
+-		interrupts = <9 IRQ_TYPE_EDGE_FALLING>;
+-		reset-gpios= <&gpio1 13 GPIO_ACTIVE_LOW>;
++		interrupts = <27 IRQ_TYPE_EDGE_FALLING>;
++		touchscreen-inverted-x = <1>;
++		touchscreen-inverted-y = <1>;
+ 	};
+ 
+ 	pcf8523: rtc@68 {
+@@ -777,10 +779,10 @@ MX8MP_IOMUXC_I2C3_SDA__I2C3_SDA		0x400001c2
+ 		>;
+ 	};
+ 
+-	edt_ft5x06_pins: edt-ft5x06-pins-grp{
++	gt911_pins: gt911-pins-grp{
+ 		fsl,pins = <
+-			MX8MP_IOMUXC_SAI1_RXD7__GPIO4_IO09	0x41	/* INT */
+-			MX8MP_IOMUXC_GPIO1_IO13__GPIO1_IO13	0x41
++			MX8MP_IOMUXC_SAI2_MCLK__GPIO4_IO27      0x41    /* INT */
++			MX8MP_IOMUXC_GPIO1_IO13__GPIO1_IO13     0x41
+ 		>;
+ 	};
+ 
+@@ -1027,3 +1029,4 @@ &lcdif3 {
+ 	thres-high = <3 4>;             /* (FIFO * 3 / 4) */
+ };
+ 
++
+-- 
+2.25.1
+

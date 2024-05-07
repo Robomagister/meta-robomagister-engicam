@@ -1,0 +1,25 @@
+From 97a24b29614c1966d8628cff001bb59b75f85ad2 Mon Sep 17 00:00:00 2001
+From: Simone Tellini <simone.tellini@robomagister.com>
+Date: Mon, 16 Oct 2023 15:41:24 +0000
+Subject: [PATCH] Switch to a devicetree with lvds enabled
+
+---
+ include/configs/imx8mp_icore.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/imx8mp_icore.h b/include/configs/imx8mp_icore.h
+index abad11b116..30f62d842f 100644
+--- a/include/configs/imx8mp_icore.h
++++ b/include/configs/imx8mp_icore.h
+@@ -98,7 +98,7 @@
+ 	"boot_fdt=try\0" \
+ 	"fdt_high=0xffffffffffffffff\0"		\
+ 	"boot_fit=no\0" \
+-	"fdtfile=imx8mp-icore-fasteth-ctouch2.dtb\0" \
++	"fdtfile=imx8mp-icore-fasteth-ctouch2-amp10.dtb\0" \
+ 	"bootm_size=0x10000000\0" \
+ 	"mmcdev=2\0" \
+ 	"mmcpart=1\0" \
+-- 
+2.25.1
+
