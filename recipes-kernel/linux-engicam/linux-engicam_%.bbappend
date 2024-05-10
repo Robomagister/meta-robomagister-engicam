@@ -4,11 +4,11 @@ NAND_DISPLAY_DEVICETREE = "imx8mp-icore-fasteth-ctouch2-n-and.dts"
 
 SRC_URI += "\
 	file://rb_kernel_config \
-	file://${NAND_DISPLAY_DEVICETREE} \
 "
 
 SRC_URI:append:imx8mp-icore-fasteth = " \
 	file://0003-Goodix-touchscreen-driver.patch \
+	file://${NAND_DISPLAY_DEVICETREE} \
 "
 
 SRC_URI:append:imx8mp-icore-fasteth-robomagister = " \

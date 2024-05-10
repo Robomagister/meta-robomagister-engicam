@@ -4,15 +4,7 @@ LICENSE = "CLOSED"
 
 inherit core-image
 
-ROOTFS_POSTPROCESS_COMMAND:append:imx8mp-icore-fasteth = "fix_bcm43430;"
-
-fix_bcm43430() {
-    cd ${IMAGE_ROOTFS}/lib/firmware/brcm
-    ln -sf brcmfmac43430-sdio.bin brcmfmac43430-sdio.engi,imx8-icore.bin
-}
-
 IMAGE_FEATURES += " \
-    read-only-rootfs \
 	debug-tweaks \
 "
 
@@ -27,6 +19,8 @@ ENGICAM_PKGS:imx8mp-icore-fasteth = " \
 "
 
 ENGICAM_PKGS:imx8mp-icore-fasteth-robomagister = " \
+    brcm-patchram-plus \
+    linux-firmware-bcm43430 \
     linux-firmware \
 	kernel-image-image \
 	u-boot-engicam-env \
@@ -52,3 +46,12 @@ IMAGE_INSTALL:append:mx8m = "\
 "
 
 IMAGE_FSTYPES = "wic.gz"
+
+ROOTFS_POSTPROCESS_COMMAND:append = "fixInstallRootFs;"
+
+fixInstallRootFs() {
+    cd ${IMAGE_ROOTFS}
+	
+	sed -i '/\/dev\/mmcblk2p3.*/d' etc/fstab
+	sed -i '/.*\/home\/weston.*/d' etc/fstab
+}
