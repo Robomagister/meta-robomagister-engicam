@@ -13,7 +13,6 @@ SRC_URI:append:imx8mp-icore-fasteth = " \
 "
 
 SRC_URI:append:imx8mp-icore-fasteth-robomagister = " \
-	file://0001-added-58Mhz-ldb-clock.patch \
 	file://0002-added-imx8mp-icore-fasteth-robomagister-initial-supp.patch \
 	file://${ROBOMAGISTER_DEVICETREE} \
 "

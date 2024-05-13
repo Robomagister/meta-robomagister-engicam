@@ -6,6 +6,8 @@ inherit core-image
 
 IMAGE_FEATURES += " \
 	debug-tweaks \
+	weston \
+	splash \
 "
 
 ENGICAM_PKGS = ""
@@ -13,17 +15,6 @@ ENGICAM_PKGS = ""
 ENGICAM_PKGS:imx8mp-icore-fasteth = " \
     brcm-patchram-plus \
     linux-firmware-bcm43430 \
-    linux-firmware \
-	kernel-image-image \
-	u-boot-engicam-env \
-"
-
-ENGICAM_PKGS:imx8mp-icore-fasteth-robomagister = " \
-    brcm-patchram-plus \
-    linux-firmware-bcm43430 \
-    linux-firmware \
-	kernel-image-image \
-	u-boot-engicam-env \
 "
 
 NETWORK_PKGS = " \
@@ -37,6 +28,10 @@ CORE_IMAGE_EXTRA_INSTALL += " \
     tzdata \
 	kernel-image \
 	kernel-devicetree \
+	kernel-image-image \
+    linux-firmware \
+	u-boot-engicam-env \
+	chromium-ozone-wayland \
     ${ENGICAM_PKGS} \
     ${NETWORK_PKGS} \
 "
