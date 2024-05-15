@@ -9,7 +9,8 @@
 #include "../freescale/imx8mp.dtsi"
 
 / {
-	model = "Engicam i.MX8MPlus Fasteth ";
+	model = "Engicam i.MX8MPlus Fasteth - Robomagister";
+	compatible = "engi,imx8-icore", "fsl,imx8mp";
 
 	chosen {
 		stdout-path = &uart2;
@@ -18,7 +19,6 @@
 	aliases {
 		rtc1 = &snvs_rtc;
 	};
-
 
 	wifi_pwrseq: wifi_pwrseq {
 		compatible = "mmc-pwrseq-simple";
@@ -650,7 +650,6 @@
 		>;
 	};
 
-
 	pinctrl_flexcan1: flexcan1grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI5_RXD2__CAN1_RX          0x154
@@ -806,7 +805,6 @@
 		>;
 	};
 };
-
 
 &vpu_g1 {
 	status = "okay";
