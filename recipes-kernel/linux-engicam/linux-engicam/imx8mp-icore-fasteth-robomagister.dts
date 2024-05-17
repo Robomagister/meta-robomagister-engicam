@@ -242,16 +242,16 @@
 		status = "okay";
 
 		panel-timing {
-		    /* 1024x600 @65Hz */
-		    clock-frequency = <65000000>;
+		    /* 1024x600 @58Hz */
+		    clock-frequency = <58000000>;
 		    hactive = <1024>;
 		    vactive = <600>;
-		    hback-porch = <140>;
-		    hfront-porch = <160>;
-		    hsync-len = <20>;
-		    vback-porch = <20>;
-		    vfront-porch = <12>;
-		    vsync-len = <3>;
+		    hback-porch = <160>;
+		    hfront-porch = <20>;
+		    hsync-len = <136>;
+		    vback-porch = <29>;
+		    vfront-porch = <3>;
+		    vsync-len = <6>;
 		};
 
 		port {
