@@ -67,7 +67,7 @@
 
 		CAN_SILENT { //MX8MP_IOMUXC_GPIO1_IO07__GPIO1_IO07
 			gpio-export,name = "CAN_SILENT";
-			gpio-export,output = <1>; //PIN SOM 12 GPIO1_IO07
+			gpio-export,output = <0>; //PIN SOM 12 GPIO1_IO07
 			gpios = <&gpio1 7 0>;
 		};
 

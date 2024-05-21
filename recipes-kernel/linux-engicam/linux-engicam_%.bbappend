@@ -32,11 +32,11 @@ do_configure:prepend() {
 }
 
 do_configure:append:imx8mp-icore-fasteth() {
-    cp ${WORKDIR}/${NAND_DISPLAY_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam
+    cp ${WORKDIR}/${NAND_DISPLAY_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam/
 }
 
 do_configure:append:imx8mp-icore-fasteth-robomagister() {
-    cp -f ${WORKDIR}/${ROBOMAGISTER_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam
+    cp -f ${WORKDIR}/${ROBOMAGISTER_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam/
 }
 
 # override Engicam's defconfig - do it here because (quote):
