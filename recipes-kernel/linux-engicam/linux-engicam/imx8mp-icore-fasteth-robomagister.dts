@@ -422,17 +422,6 @@
 		reg = <0x4d>;
 		reference-voltage-microvolt = <4500000>; /* 4.5 V */
 	};
-	
-	gt911@14 {
-		compatible = "goodix,gt911";
-		reg = <0x14>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&gt911_pins>;
-		interrupt-parent = <&gpio4>;
-		interrupts = <27 IRQ_TYPE_EDGE_FALLING>;
-		touchscreen-inverted-x = <1>;
-		touchscreen-inverted-y = <1>;
-	};
 };
 
 &i2c3 {
@@ -626,6 +615,7 @@
 			MX8MP_IOMUXC_GPIO1_IO09__GPIO1_IO09		0x19
 			MX8MP_IOMUXC_GPIO1_IO10__GPIO1_IO10		0x19
 			MX8MP_IOMUXC_GPIO1_IO12__GPIO1_IO12		0x19
+			MX8MP_IOMUXC_GPIO1_IO13__GPIO1_IO13		0x19
 			MX8MP_IOMUXC_GPIO1_IO14__GPIO1_IO14		0x20
 			MX8MP_IOMUXC_GPIO1_IO15__GPIO1_IO15		0x19
 			MX8MP_IOMUXC_HDMI_DDC_SCL__GPIO3_IO26	0x19
@@ -675,13 +665,6 @@
 		fsl,pins = <
 			MX8MP_IOMUXC_I2C3_SCL__I2C3_SCL		0x400001c2
 			MX8MP_IOMUXC_I2C3_SDA__I2C3_SDA		0x400001c2
-		>;
-	};
-	
-	gt911_pins: gt911-pins-grp {
-		fsl,pins = <
-			MX8MP_IOMUXC_SAI2_MCLK__GPIO4_IO27      0x41    /* INT */
-			MX8MP_IOMUXC_GPIO1_IO13__GPIO1_IO13     0x41
 		>;
 	};
 
