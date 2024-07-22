@@ -1,0 +1,20 @@
+diff --git a/arch/arm64/configs/imx8_icore_defconfig b/arch/arm64/configs/imx8_icore_defconfig
+index 1f91281d8f06..77ab4a3e4395 100644
+--- a/arch/arm64/configs/imx8_icore_defconfig
++++ b/arch/arm64/configs/imx8_icore_defconfig
+@@ -598,6 +598,7 @@ CONFIG_CHARGER_BQ25980=m
+ CONFIG_SENSORS_ARM_SCMI=y
+ CONFIG_SENSORS_ARM_SCPI=y
+ CONFIG_SENSORS_FP9931=y
++CONFIG_SENSORS_MCP3021=y
+ CONFIG_SENSORS_LM90=m
+ CONFIG_SENSORS_PWM_FAN=m
+ CONFIG_SENSORS_RASPBERRYPI_HWMON=m
+@@ -1378,7 +1379,6 @@ CONFIG_DEBUG_INFO=y
+ CONFIG_DEBUG_INFO_REDUCED=y
+ CONFIG_MAGIC_SYSRQ=y
+ CONFIG_DEBUG_FS=y
+-CONFIG_DEBUG_KERNEL=y
+ # CONFIG_SCHED_DEBUG is not set
+ # CONFIG_DEBUG_PREEMPT is not set
+ # CONFIG_FTRACE is not set

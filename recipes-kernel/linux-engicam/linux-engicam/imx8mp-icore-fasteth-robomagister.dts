@@ -12,10 +12,6 @@
 	model = "Engicam i.MX8MPlus Fasteth - Robomagister";
 	compatible = "engi,imx8-icore", "fsl,imx8mp";
 
-	chosen {
-		stdout-path = &uart2;
-	};
-
 	aliases {
 		rtc1 = &snvs_rtc;
 	};
