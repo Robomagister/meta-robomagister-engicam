@@ -42,7 +42,7 @@
 			gpio-export,output = <1>; //PIN SOM 8 GPIO1_IO03
 			gpios = <&gpio1 3 0>;
 		};
-
+/*
 		GPIO2_LCD { //MX8MP_IOMUXC_GPIO1_IO00__GPIO1_IO00
 			gpio-export,name = "GPIO2_LCD";
 			gpio-export,output = <1>; //PIN SOM 6 GPIO1_IO00
@@ -54,7 +54,7 @@
 			gpio-export,output = <1>; //PIN SOM 7 SAI1_RXD7
 			gpios = <&gpio4 9 0>;
 		};
-
+*/
 		CPU_PCIE_CLK_EN_N { //MX8MP_IOMUXC_GPIO1_IO06__GPIO1_IO06
 			gpio-export,name = "CPU_PCIE_CLK_EN_N";
 			gpio-export,output = <1>; //PIN SOM 11 GPIO1_IO06
@@ -418,6 +418,17 @@
 		reg = <0x4d>;
 		reference-voltage-microvolt = <4500000>; /* 4.5 V */
 	};
+	
+	gt911@5d {
+		compatible = "goodix,gt911";
+		reg = <0x5d>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&gt911_pins>;
+		interrupt-parent = <&gpio1>;
+		interrupts = <0 IRQ_TYPE_EDGE_FALLING>;
+		touchscreen-inverted-x = <1>;
+		touchscreen-inverted-y = <1>;
+	};
 };
 
 &i2c3 {
@@ -603,8 +614,8 @@
 	pinctrl_hog: hoggrp {
 		fsl,pins = <
 			MX8MP_IOMUXC_GPIO1_IO03__GPIO1_IO03		0x19
-			MX8MP_IOMUXC_GPIO1_IO00__GPIO1_IO00		0x19
-			MX8MP_IOMUXC_SAI1_RXD7__GPIO4_IO09		0x19
+			/*MX8MP_IOMUXC_GPIO1_IO00__GPIO1_IO00		0x19
+			MX8MP_IOMUXC_SAI1_RXD7__GPIO4_IO09		0x19*/
 			MX8MP_IOMUXC_GPIO1_IO06__GPIO1_IO06		0x19
 			MX8MP_IOMUXC_GPIO1_IO07__GPIO1_IO07		0x19
 			MX8MP_IOMUXC_GPIO1_IO08__GPIO1_IO08		0x19
@@ -661,6 +672,13 @@
 		fsl,pins = <
 			MX8MP_IOMUXC_I2C3_SCL__I2C3_SCL		0x400001c2
 			MX8MP_IOMUXC_I2C3_SDA__I2C3_SDA		0x400001c2
+		>;
+	};
+	
+	gt911_pins: gt911-pins-grp {
+		fsl,pins = <
+			MX8MP_IOMUXC_SAI1_RXD7__GPIO4_IO09    0x19    /* RESET */
+			MX8MP_IOMUXC_GPIO1_IO00__GPIO1_IO00    0x19    /* INTERRUPT */
 		>;
 	};
 
