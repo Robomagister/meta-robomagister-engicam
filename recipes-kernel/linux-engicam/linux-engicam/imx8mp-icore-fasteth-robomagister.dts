@@ -568,7 +568,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_usdhc1>, <&pinctrl_panasonic>;
 	bus-width = <4>;
-	max-frequency = <15000000>;
+	max-frequency = <50000000>;
 	no-1-8-v;
 	pm-ignore-notify;
 	keep-power-in-suspend;
