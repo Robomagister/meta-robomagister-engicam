@@ -7,14 +7,21 @@ inherit core-image
 IMAGE_FEATURES += " \
 	debug-tweaks \
 	weston \
-	splash \
+    ssh-server-dropbear \
+    tools-debug \
+	package-management \
 "
 
 ENGICAM_PKGS = ""
 
 ENGICAM_PKGS:imx8mp-icore-fasteth = " \
+	imx8-brcm \
     brcm-patchram-plus \
     linux-firmware-bcm43430 \
+"
+
+ENGICAM_PKGS:imx8mp-icore-fasteth-robomagister = " \
+    mlan-mod-load \
 "
 
 NETWORK_PKGS = " \
@@ -31,13 +38,14 @@ CORE_IMAGE_EXTRA_INSTALL += " \
 	kernel-image-image \
     linux-firmware \
 	u-boot-engicam-env \
-	chromium-ozone-wayland \
+    iproute2 \
+    tcpdump \
+    memtester \
+    evtest \
+	i2c-tools \
+	curl \
     ${ENGICAM_PKGS} \
     ${NETWORK_PKGS} \
-"
-
-IMAGE_INSTALL:append:mx8m = "\
-	imx8-brcm \
 "
 
 IMAGE_FSTYPES = "wic.gz"
