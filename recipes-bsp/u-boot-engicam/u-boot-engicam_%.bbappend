@@ -12,7 +12,7 @@ do_configure:append() {
 }
 
 do_configure:append:imx8mp-icore-fasteth() {
-    sed -i 's/\("boot_fit=.*\\0" \\\)/\0\n \t"fdtfile=imx8mp-icore-fasteth-ctouch2-n-and.dtb\\0" \\/' ${S}/include/configs/imx8mp_icore.h
+    sed -i 's/\("boot_fit=.*\\0" \\\)/\0\n \t"fdtfile=imx8mp-icore-fasteth-ctouch2-steliau.dtb\\0" \\/' ${S}/include/configs/imx8mp_icore.h
 }
 
 do_configure:append:imx8mp-icore-fasteth-robomagister() {

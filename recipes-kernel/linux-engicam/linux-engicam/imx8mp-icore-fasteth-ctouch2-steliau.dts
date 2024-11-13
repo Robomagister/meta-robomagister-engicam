@@ -1,7 +1,7 @@
 #include "imx8mp-icore-fasteth-ctouch2.dts"
 
 / {
-	model = "Engicam i.Core MX8MP CTOUCH2.0 AMP10";
+	model = "Engicam i.Core MX8MP CTOUCH2.0 STELIAU";
 
 	lvds_backlight: lvds_backlight {
 		compatible = "pwm-backlight";
@@ -27,7 +27,7 @@
 
 		width-mm = <154>;
 		height-mm = <86>;
-		data-mapping = "vesa-24";
+		data-mapping = "jeida-24";
 		status = "okay";
 
 		panel-timing {
@@ -52,9 +52,9 @@
 };
 
 &i2c2 {
-	gt911_14: gt911@14 {
+	gt911_5d: gt911@5d {
 		compatible = "goodix,gt911";
-		reg = <0x14>;
+		reg = <0x5d>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&gt911_pins>;
 		interrupt-parent = <&gpio4>;
@@ -82,7 +82,7 @@
 &ldb {
 	status = "okay";
 	lvds-channel@0 {
-		fsl,data-mapping = "spwg";
+		fsl,data-mapping = "jeida";
 		fsl,data-width = <24>;
 		status = "okay";
 
