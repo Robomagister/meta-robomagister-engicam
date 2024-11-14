@@ -5,6 +5,7 @@ STELIAU_DISPLAY_DEVICETREE = "imx8mp-icore-fasteth-ctouch2-steliau.dts"
 ROBOMAGISTER_DEVICETREE = "imx8mp-icore-fasteth-robomagister.dts"
 
 SRC_URI:append:imx8mp-icore-fasteth = " \
+	file://${NAND_DISPLAY_DEVICETREE} \
 	file://${STELIAU_DISPLAY_DEVICETREE} \
 	file://rb_kernel_config \
 "
