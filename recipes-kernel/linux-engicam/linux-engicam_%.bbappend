@@ -32,6 +32,7 @@ do_configure:prepend() {
 }
 
 do_configure:append:imx8mp-icore-fasteth() {
+    cp ${WORKDIR}/${NAND_DISPLAY_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam/
     cp ${WORKDIR}/${STELIAU_DISPLAY_DEVICETREE} ${S}/arch/arm64/boot/dts/engicam/
 }
 
