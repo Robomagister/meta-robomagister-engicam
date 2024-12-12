@@ -21,5 +21,7 @@ do_configure:append:imx8mp-icore-fasteth-robomagister() {
 
 do_configure:append:env-prod() {
 	sed -i '/"bootdelay=.*\\0" \\/d' ${S}/include/configs/imx8mp_icore.h
+	sed -i '/"console=.*\\0" \\/d' ${S}/include/configs/imx8mp_icore.h
     sed -i 's/\("boot_fit=.*\\0" \\\)/\0\n \t"bootdelay=-2\\0" \\/' ${S}/include/configs/imx8mp_icore.h
+    sed -i 's/\("boot_fit=.*\\0" \\\)/\0\n \t"console=ttynull\\0" \\/' ${S}/include/configs/imx8mp_icore.h
 }
