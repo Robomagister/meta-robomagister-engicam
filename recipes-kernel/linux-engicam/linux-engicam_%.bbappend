@@ -30,6 +30,7 @@ kernel_conf_variable() {
 
 do_configure:prepend() {
 	kernel_conf_variable LOGO n
+	kernel_conf_variable NULL_TTY y
 }
 
 do_configure:append:imx8mp-icore-fasteth() {
