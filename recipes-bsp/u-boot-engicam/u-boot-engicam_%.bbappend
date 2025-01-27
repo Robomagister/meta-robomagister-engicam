@@ -1,6 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "\
+	file://u-boot-altboot.cfg \
 	file://0001-Fix-u-boot-default-env.patch \
 "
 
