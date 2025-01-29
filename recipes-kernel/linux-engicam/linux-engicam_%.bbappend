@@ -1,5 +1,11 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
+KERNEL_SRC = "git://github.com/Robomagister/linux-engicam-nxp.git;protocol=https"
+SRCBRANCH = "RB-5.15.71"
+
+SRCREV = "2a1725dfd9e0a52ae109210fd8393e7b6e06d45e"
+SRCREV:imx8mp-icore-fasteth = "8df7a9abbd5201596c676d5cf33da8d2ef34a98e"
+
 NAND_DISPLAY_DEVICETREE = "imx8mp-icore-fasteth-ctouch2-n-and.dts"
 STELIAU_DISPLAY_DEVICETREE = "imx8mp-icore-fasteth-ctouch2-steliau.dts"
 ROBOMAGISTER_DEVICETREE = "imx8mp-icore-fasteth-robomagister.dts"
@@ -15,8 +21,6 @@ SRC_URI:append:imx8mp-icore-fasteth-robomagister = " \
 	file://0002-imx8mp-icore-fasteth-robomagister-defconfig.patch \
 	file://${ROBOMAGISTER_DEVICETREE} \
 "
-
-SRCREV:imx8mp-icore-fasteth = "8df7a9abbd5201596c676d5cf33da8d2ef34a98e"
 
 kernel_conf_variable() {
 	CONF_SED_SCRIPT="$CONF_SED_SCRIPT /CONFIG_$1[ =]/d;"
