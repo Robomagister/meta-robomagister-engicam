@@ -35,6 +35,7 @@ kernel_conf_variable() {
 do_configure:prepend() {
 	kernel_conf_variable LOGO n
 	kernel_conf_variable NULL_TTY y
+	kernel_conf_variable SYN_COOKIES y
 	kernel_conf_variable SND_SOC_IMX_HDMI n
 	kernel_conf_variable SND_USB n
 }
